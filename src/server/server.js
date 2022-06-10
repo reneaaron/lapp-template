@@ -5,12 +5,12 @@ const { setupAuth } = require("./auth.js");
 const { setupPay } = require("./pay.js");
 
 // Validate configuration
-// if (!process.env.LNBITS_URL || !process.env.LNBITS_INVOICE_KEY || !process.env.LNURL) {
-//   console.error(
-//     "You need to configure your environment variables first. Check out the README file!"
-//   );
-//   process.exit(1);
-// }
+if (!process.env.LNBITS_URL || !process.env.LNBITS_INVOICE_KEY || !process.env.LNURL) {
+  console.error(
+    "You need to configure your environment variables first. Check out the README file!"
+  );
+  process.exit(1);
+}
 
 const app = express();
 
