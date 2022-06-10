@@ -1,0 +1,16 @@
+spec:
+  name: lapp-template
+  services:
+  - name: web
+    git:
+      branch: master
+      repo_clone_url: https://github.com/reneaaron/lapp-template.git
+    envs:
+    - key: LNBITS_INVOICE_KEY
+      type: SECRET
+    - key: LNBITS_URL
+      type: SECRET
+    - key: LNURL
+      type: SECRET
+
+
