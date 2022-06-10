@@ -27,4 +27,4 @@ Remix this glitch and set the environment variables by editing the `.env` file:
 
 ## Hosting
 
-[![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/reneaaron/lightningapp-template/tree/master&refcode=42dd69fa9253)
+[![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/reneaaron/lapp-template/tree/master&refcode=42dd69fa9253)
