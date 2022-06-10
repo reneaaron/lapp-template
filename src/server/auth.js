@@ -80,10 +80,8 @@ function setupAuth(app) {
         session.lnurlAuth = session.lnurlAuth || {};
         session.lnurlAuth.linkingPublicKey = req.query.key;
         
-        
-        const result = await session.save();  
-        console.log(result);
-        res.status(200).json({ status: "OK" });
+        await session.save();  
+        return res.status(200).json({ status: "OK" });
     }
       
     req.session = req.session || {};
@@ -100,9 +98,10 @@ function setupAuth(app) {
     });
 
     const callbackUrl =`https://${req.get("host")}/do-login?${params.toString()}`;
-
+    
     const encoded = lnurl.encode(callbackUrl).toUpperCase();
     const qrCode = await qrcode.toDataURL(encoded);
+
     return res.json({
       lnurl: encoded,
       qrCode: qrCode,
