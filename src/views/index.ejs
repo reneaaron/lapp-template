@@ -1,0 +1,14 @@
+<% if(!user) { %>
+  <h1 class="text-center fw-bold">Your project's tagline</h1>
+<p class="text-center lead">
+  👉 Your elevator pitch goes here.
+</p>
+<% } else { %>
+  <div class="px-4 py-5 my-5 text-center">
+
+      <h1 class="display-5 fw-bold">Welcome, <%= user.id.substring(0, 10) %>!</h1>
+      <p class="lead">
+        🔐 Only signed in users will see this section.
+      </p>
+  </div>
+<% } %>
