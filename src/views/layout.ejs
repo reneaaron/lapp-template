@@ -118,76 +118,43 @@
       </div>
     </div>
   
+    <!-- Modals -->
+    <div class="modal fade" id="pay" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Pay with Bitcoin</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mx-auto text-center">
+              
+              <div class="d-none m-3 qr-container">
+                <a class="qr-link" href="">
+                  <img width="300" height="300" class="qr" src="">
+                </a>
+
+                <a href="#" class="d-none btn btn-primary btn-xl mx-auto webln-button" onclick="startWebLN()">Pay in your browser</a>
+              </div>
+
+
+            </div>
+            
+    
+          </div>
+          <div class="modal-footer justify-content-center">
+            <div class="spinner-border m-2 text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <span class="loading-text"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
       
-    <script>
-      
-      const signinButton = document.getElementById('signin-button');
-      const qrButton = document.getElementById('qr-button');
-      const weblnButton = document.getElementById('webln-button');
-      const loginModal = new bootstrap.Modal('#signin');
-      
-      async function signin() {
-        
-        loginModal.show();
-        
-        document.getElementById('signin').addEventListener('hidden.bs.modal', (event) => {
-          signinButton.disabled = false;
-          signinButton.innerHTML = '<i class="bi bi-currency-bitcoin"></i> Sign in';
-        });
-        
-        signinButton.disabled = true;
-        signinButton.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only"> Connecting...</span>`;
-        
-        const request = await fetch('/do-login');
-        const result = await request.json();
-        
-        document.getElementById('qr-link').href = "lightning:" + result.lnurl;
-        document.getElementById('qr').src = result.qrCode;
-        
-        if(window.webln) {
-          weblnButton.href = "lightning:" + result.lnurl;
-          weblnButton.classList.remove('d-none');
-        } 
-        
-        startPolling(3000, function() {
-          window.location.reload();
-        });
-      }
-      
-      function loading() {
-        document.querySelector('.modal-footer').classList.remove('d-none');
-      }
-      
-      function startQr() {
-        loading();
-        document.querySelector('#qr-container').classList.remove('d-none');
-      }
-      
-      function startWebLN() {  
-        loading();
-        weblnButton.disabled = true;
-      }
-      
-      async function isSignedIn() {
-        const response = await fetch('/me');
-        const result = await response.json();
-        
-        return result.user != null;
-      }
-      
-      function startPolling(timeout, onSuccess) {
-          setTimeout(async function() {
-            const result = await isSignedIn();
-            
-            if(!result) {
-                startPolling(timeout, onSuccess);
-            } else {
-              onSuccess();
-            }
-          }, timeout);
-      }
-      
-    </script>
+    <script src="js/pay.js"></script>
+    <script src="js/signin.js"></script>
   </body>
 </html>

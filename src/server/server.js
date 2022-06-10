@@ -17,8 +17,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use(expressLayouts);
-app.use(express.static("public"));
-app.use('/components', express.static('src/components'));
+app.use('/js', express.static('src/js'));
 
 app.set("view engine", "ejs");
 app.set("views", "src/views");
