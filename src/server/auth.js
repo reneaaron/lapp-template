@@ -5,7 +5,6 @@ const { HttpError, verifyAuthorizationSignature } = require("lnurl/lib");
 const assert = require("assert");
 const crypto = require("crypto");
 const lnurl = require("lnurl");
-const querystring = require("querystring");
 const qrcode = require("qrcode");
 
 const map = {
@@ -95,12 +94,12 @@ function setupAuth(app) {
       map.session.set(k1, req.session);
     }
 
-    const callbackUrl =
-      "https://" +
-      `${req.get("host")}/do-login?${querystring.stringify({
-        k1,
-        tag: "login",
-      })}`;
+    const params = new URLSearchParams({
+      k1,
+      tag: "login"
+    });
+
+    const callbackUrl =`https://${req.get("host")}/do-login?${params.toString()}`;
 
     const encoded = lnurl.encode(callbackUrl).toUpperCase();
     const qrCode = await qrcode.toDataURL(encoded);

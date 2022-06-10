@@ -1,8 +1,8 @@
 {
-  "name": "lightning-app-template",
+  "name": "lapp-template",
   "version": "0.0.1",
-  "description": "A simple Node app built on fastify, instantly up and running.",
-  "main": "server.js",
+  "description": "A project template to jump-start developing a ⚡ Lightning app.",
+  "main": "src/server/server.js",
   "scripts": {
     "start": "node src/server/server.js"
   },
@@ -22,14 +22,13 @@
     "moment": "^2.29.3",
     "passport": "^0.6.0",
     "passport-lnurl-auth": "^1.5.0",
-    "qrcode": "^1.5.0",
-    "querystring": "^0.2.1"
+    "qrcode": "^1.5.0"
   },
   "engines": {
     "node": "16.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/glitch-mvp-node"
+    "url": "https://glitch.com/edit/#!/lapp-template"
   },
   "license": "MIT",
   "keywords": [
