@@ -7,23 +7,22 @@ A project template to jump-start developing a ⚡ Lightning app.
 ## Features
 
  - ✅ Lightning Authentication (using LNURL-auth)
- - 🔜 Request payments from users (WebLN + QR-Code)
+ - ✅ Request payments from users (WebLN + QR-Code)
+ - ✅ Invoice APIs (request invoices, check invoice status)
 
 ## Getting started
 
 ### Lightning setup
 
-1. Create a new wallet on LNBits
-1. Enable the extension "LNURLp"
-1. Create a new pay link, make sure you allow comments
+1. Create a new wallet on [LNBits](https://legend.lnbits.com) or use your own LNBits server
+1. Copy the `Invoice/read key` of your wallet
 
 ### Project setup
 
 Remix this glitch and set the environment variables by editing the `.env` file:
 
-- `INVOICE_KEY`: The `Invoice/read key` of your LNBits wallet
+- `LNBITS_INVOICE_KEY`: The `Invoice/read key` of your LNBits wallet
 - `LNBITS_URL`: The URL of your LNBits instance (i.e. `https://legend.lnbits.com` ⚠️ no trailing slash)
-- `LNURL`: The LNURL-pay LNURL to generate invoices (`LNURL...`)
 
 ## Hosting
 
