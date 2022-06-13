@@ -2,14 +2,21 @@ const signinButton = document.getElementById('signin-button');
 const qrButton = document.getElementById('qr-button');
 const weblnButton = document.getElementById('webln-button');
 const loginModal = new bootstrap.Modal('#signin');
+let signinActive = false;
 
 async function signin() {
+
+    if(signinActive)
+        return;
+
+    signinActive = true;
 
     loginModal.show();
 
     document.getElementById('signin').addEventListener('hidden.bs.modal', (event) => {
         signinButton.disabled = false;
         signinButton.innerHTML = '<i class="bi bi-currency-bitcoin"></i> Sign in';
+        signinActive = false;
     });
 
     signinButton.disabled = true;
@@ -27,6 +34,7 @@ async function signin() {
     }
 
     startPolling(1000, function () {
+        signinActive = false;
         window.location.reload();
     });
 }
@@ -53,6 +61,9 @@ async function isSignedIn() {
 }
 
 function startPolling(timeout, onSuccess) {
+    if(!signinActive)
+        return;
+        
     setTimeout(async function () {
         const result = await isSignedIn();
 

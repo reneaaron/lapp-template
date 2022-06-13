@@ -1,0 +1,9 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', sans-serif !important;
+}
+
+html.wait, html.wait * { cursor: wait !important; }

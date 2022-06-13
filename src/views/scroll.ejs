@@ -1,0 +1,65 @@
+<div id="parts-container">
+    <div class="vh-100  text-center">
+        <i class="bi bi-arrow-down-short"></i> Scroll to pay
+    </div>
+    <div class="vh-100 text-center" style="display: none">
+        <i class="bi bi-arrow-down-short"></i> Scroll to pay
+    </div>
+    <div class="vh-100 text-center" style="display: none">
+        <i class="bi bi-info-circle"></i> You might want to set a budget.
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+    <div class="vh-100 text-center" style="display: none">
+        <i class="bi bi-arrow-down-short"></i> Scroll to pay
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+    <div class="vh-100 text-center" style="display: none">
+        <i class="bi bi-arrow-down-short"></i> Scroll to pay
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+    <div class="text-center" style="display: none">
+        <i class="bi bi-flag-fill"></i></i> You reached the end.<br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+</div>
+<div id="loading" class="py-5" style="display: none;">
+    <div class="text-center">
+        <div class="spinner-border" role="status" aria-hidden="true"></div>
+        <div>&nbsp;Waiting for payment</div>
+        <div><span class="text-black-50">This may take a few seconds.</span></div>
+    </div>
+</div>
+
+<script>
+    window.addEventListener('load', function () {
+
+        const body = document.querySelector('body');
+        let requestScroll = 1, paidScroll = 1;
+        let paymentActive = false;
+
+        document.addEventListener('scroll', async (event) => {
+
+            const body = document.querySelector('body');
+            
+            // Only trigger event at the end of the page (tolerance: 30 pixels)
+            if ((body.scrollHeight - this.scrollY - body.clientHeight) > 30)
+                return;
+
+            // User has reached the end of the page
+            const children = document.getElementById(`parts-container`).children;
+            if(paymentActive || paidScroll == children.length - 1)
+                return;
+            
+            document.getElementById('loading').style.display = '';
+
+            requestPaymentWebLN(1, "Scrolling the page", function() {
+
+                paidScroll += 1;
+
+                document.getElementById('parts-container').children[paidScroll].style.display = '';
+                document.getElementById('loading').style.display = 'none';
+
+                success();
+            });
+        });
+    });
+</script>

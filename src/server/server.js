@@ -5,7 +5,7 @@ const { setupAuth } = require("./auth.js");
 const { setupPay } = require("./pay.js");
 
 // Validate configuration
-if (!process.env.LNBITS_URL || !process.env.LNBITS_INVOICE_KEY || !process.env.LNURL) {
+if (!process.env.LNBITS_URL || !process.env.LNBITS_INVOICE_KEY) {
   console.error(
     "You need to configure your environment variables first. Check out the README file!"
   );
@@ -32,6 +32,13 @@ setupPay(app);
 // Your application routes go here 👇
 app.get("/", function (req, res) {
   return res.render("index", {
+    user: req.user
+  });
+});
+
+// Your application routes go here 👇
+app.get("/scroll", function (req, res) {
+  return res.render("scroll", {
     user: req.user
   });
 });
