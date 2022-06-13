@@ -40,7 +40,7 @@ async function pay(amount) {
     document.querySelector('#pay .qr-link').href = "lightning:" + result.payment_request;
     document.querySelector('#pay .qr').src = result.qrCode;
 
-    startPollingPayment(result.payment_hash, 3000, function () {
+    startPollingPayment(result.payment_hash, 1000, function () {
         window.location.reload();
     });
 }

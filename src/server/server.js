@@ -18,6 +18,7 @@ app.use(bodyParser.json());
 
 app.use(expressLayouts);
 app.use('/js', express.static('src/js'));
+app.use(express.static('public'));
 
 app.set("view engine", "ejs");
 app.set("views", "src/views");
@@ -25,6 +26,7 @@ app.set("views", "src/views");
 // Setup authentication, register routes & session handling
 setupAuth(app);
 
+// Setup payment APIs for invoice generation & more 🚀
 setupPay(app);
 
 // Your application routes go here 👇

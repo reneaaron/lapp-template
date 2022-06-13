@@ -26,7 +26,7 @@ async function signin() {
         weblnButton.classList.remove('d-none');
     }
 
-    startPolling(3000, function () {
+    startPolling(1000, function () {
         window.location.reload();
     });
 }
