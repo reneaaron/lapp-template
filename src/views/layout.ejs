@@ -87,6 +87,8 @@
       <%- body %>  
     </div>
 
+    <!-- Modals -->
+
     <div class="modal fade" id="signin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -122,8 +124,7 @@
         </div>
       </div>
     </div>
-  
-    <!-- Modals -->
+    
     <div class="modal fade" id="pay" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -131,21 +132,13 @@
             <h5 class="modal-title" id="staticBackdropLabel">Pay with Bitcoin</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
-            <div class="mx-auto text-center">
-              
-              <div class="d-none m-3 qr-container">
-                <a class="qr-link" href="">
-                  <img width="300" height="300" class="qr" src="">
-                </a>
-
-                <a href="#" class="d-none btn btn-primary btn-xl mx-auto webln-button" onclick="startWebLN()">Pay in your browser</a>
-              </div>
-
-
+          <div class="modal-body text-center">
+            <div class="d-none m-3 qr-container">
+              <a class="qr-link" href="">
+                <img width="300" height="300" class="qr" src="">
+              </a>
+              <a href="#" class="d-none btn btn-primary btn-xl mx-auto webln-button" onclick="startWebLNPayment()">Pay in your browser</a>
             </div>
-            
-    
           </div>
           <div class="modal-footer justify-content-center">
             <div class="spinner-border m-2 text-primary" role="status">
@@ -158,6 +151,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
       
     <script src="js/pay.js"></script>
     <script src="js/signin.js"></script>

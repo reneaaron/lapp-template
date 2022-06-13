@@ -4,7 +4,6 @@ async function fetchInvoice(amount, comment) {
         body: JSON.stringify({
             amount: amount,
             comment: comment,
-
         }),
         headers: {
             "Accept": "application/json",
@@ -19,43 +18,49 @@ async function fetchInvoice(amount, comment) {
     return response.json();
 }
 
-async function pay(amount) {
+const payModal = new bootstrap.Modal('#pay');
+document.getElementById('pay').addEventListener('hidden.bs.modal', (event) => {
+    paymentActive = false;
+});
 
-    const payModal = new bootstrap.Modal('#pay');
+let paymentActive = false;
+let paymentRequest;
+
+async function requestPayment(amount, comment, onSuccess) { 
+
+    paymentActive = true;
     payModal.show();
 
     document.querySelector('#pay .loading-text').textContent = "Loading payment data...";
 
-    const result = await fetchInvoice(amount);
+    const result = await fetchInvoice(amount, comment);
+
+    paymentRequest = result.payment_request;
 
     document.querySelector('#pay .loading-text').textContent = "Waiting for your payment...";
-
-    if (window.webln) {
-        document.querySelector('#pay .webln-button').classList.remove('d-none');
-    } else {
-
-    }
-
     document.querySelector('#pay .qr-container').classList.remove('d-none');
     document.querySelector('#pay .qr-link').href = "lightning:" + result.payment_request;
     document.querySelector('#pay .qr').src = result.qrCode;
 
+    if (window.webln) {
+        document.querySelector('#pay .webln-button').classList.remove('d-none');
+    } 
+
     startPollingPayment(result.payment_hash, 1000, function () {
-        window.location.reload();
+        payModal.hide();
+        paymentActive = false;
+
+        onSuccess();
     });
 }
 
-function startQr() {
-    document.getElementById('#pay .qr-container').classList.remove('d-none');
-}
-
-async function startWebLN(payment_request) {
+async function startWebLNPayment() {
     try {
         await window.webln.enable();
-        await window.webln.sendPayment(payment_request);
+        await window.webln.sendPayment(paymentRequest);
     }
     catch(e) {
-        alert("An error happened during the payment");
+        alert("An error happened during the payment.");
     }    
 }
 
@@ -66,6 +71,8 @@ async function isPaid(payment_hash) {
 }
 
 function startPollingPayment(payment_hash, timeout, onSuccess) {
+    if(!paymentActive) return;
+
     setTimeout(async function () {
         const result = await isPaid(payment_hash);
 

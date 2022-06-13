@@ -6,7 +6,16 @@
 </p>
 
 <p class="text-center">
-  <a class="btn btn-primary btn-xxl" href="#" onclick="pay(1000)">
-    Request a payment of 1.000 sats
-  </a>  
+  <a class="btn btn-primary btn-xxl" href="#" onclick="requestPayment(21, 'Description of the payment', success)">
+    Pay 21 sats
+  </a> 
 </p>
+
+<script>
+function success() {
+  const jsConfetti = new JSConfetti()
+  jsConfetti.addConfetti({
+    emojis: ['🌈', '⚡️', '💥', '✨', '💫', '🌸'],
+  });
+}
+</script>
