@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Lightning App Template",
+    "short_name": "lapp-template",
     "icons": [
         {
             "src": "/android-chrome-96x96.png",
