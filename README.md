@@ -14,7 +14,7 @@ A project template to jump-start developing a ⚡ Lightning app.
 
 ### Lightning setup
 
-1. Create an account on getalby.com [getalby.com](https://getalby.com) 
+1. Create an account on [getalby.com](https://getalby.com) 
 1. Copy the `Lightning Address` of your wallet
 
 ### Project setup
