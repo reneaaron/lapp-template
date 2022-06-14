@@ -106,16 +106,16 @@
             Create an account and log in without a password. The website will be able to request payments for you to approve, but will not be able to see your balance.
 
             <div class="mx-auto mt-5 text-center">
-              <a id="webln-button" href="#" class="d-none btn btn-primary mx-auto" onclick="startWebLN()">Connect to browser</a>
+              <a href="#" class="webln-button d-none btn btn-primary mx-auto" onclick="startWebLN()">Connect to browser</a>
               
-              <a href="#" id="qr-button" class="btn btn-secondary" onclick="startQr()">
+              <a href="#" class="btn btn-secondary qr-button" onclick="startQr()">
                 <i class="bi bi-qr-code"></i>
                 Scan a QR code
               </a>  
 
-              <div id="qr-container" class="d-none m-3">
-                <a id="qr-link" href="">
-                  <img id="qr" src="">
+              <div class="qr-container d-none m-3">
+                <a class="qr-link" href="">
+                  <img class="qr" src="">
                 </a>
               </div>
             </div>
@@ -143,8 +143,10 @@
               <a class="qr-link" href="">
                 <img width="300" height="300" class="qr" src="">
               </a>
-              <a href="#" class="d-none btn btn-primary btn-xl mx-auto webln-button" onclick="startWebLNPayment()">Pay in your browser</a>
             </div>
+            <a href="#" class="d-none btn btn-primary btn-xl mx-auto webln-button" onclick="startWebLNPayment()">
+              Pay in your browser
+            </a>
           </div>
           <div class="modal-footer justify-content-center">
             <div class="spinner-border m-2 text-primary" role="status">

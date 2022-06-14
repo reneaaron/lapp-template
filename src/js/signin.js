@@ -1,6 +1,6 @@
 const signinButton = document.getElementById('signin-button');
-const qrButton = document.getElementById('qr-button');
-const weblnButton = document.getElementById('webln-button');
+const qrButton = document.querySelector('#signin .qr-button');
+const weblnButton = document.querySelector('#signin .webln-button');
 const loginModal = new bootstrap.Modal('#signin');
 let signinActive = false;
 
@@ -25,12 +25,15 @@ async function signin() {
     const request = await fetch('/do-login');
     const result = await request.json();
 
-    document.getElementById('qr-link').href = "lightning:" + result.lnurl;
-    document.getElementById('qr').src = result.qrCode;
+    document.querySelector('#signin .qr-link').href = "lightning:" + result.lnurl;
+    document.querySelector('#signin .qr').src = result.qrCode;
 
     if (window.webln) {
         weblnButton.href = "lightning:" + result.lnurl;
         weblnButton.classList.remove('d-none');
+    } else {
+        qrButton.classList.add('d-none');
+        startQr();
     }
 
     startPolling(1000, function () {
@@ -40,12 +43,12 @@ async function signin() {
 }
 
 function loading() {
-    document.querySelector('.modal-footer').classList.remove('d-none');
+    document.querySelector('#signin .modal-footer').classList.remove('d-none');
 }
 
 function startQr() {
     loading();
-    document.querySelector('#qr-container').classList.remove('d-none');
+    document.querySelector('#signin  .qr-container').classList.remove('d-none');
 }
 
 function startWebLN() {

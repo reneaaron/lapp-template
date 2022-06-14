@@ -5,7 +5,7 @@ const { setupAuth } = require("./auth.js");
 const { setupPay } = require("./pay.js");
 
 // Validate configuration
-if (!process.env.LNBITS_URL || !process.env.LNBITS_INVOICE_KEY) {
+if (!process.env.ALBY_LIGHTNING_ADDRESS) {
   console.error(
     "You need to configure your environment variables first. Check out the README file!"
   );
