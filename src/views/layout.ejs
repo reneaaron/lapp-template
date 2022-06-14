@@ -21,6 +21,8 @@
     <meta name="og:site_name" content="⚡ Lightning App">
     <meta name="og:locale" content="en">
     <meta name="og:type" content="website">
+
+    <meta name="lightning" content="lnurlp:reneaaron@getalby.com"/>
     
     <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -49,6 +51,16 @@
           </a>
           
          <ul class="navbar-nav m-auto me-0">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/pay">
+                <i class="bi bi-wallet"></i> Request payments
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/scroll">
+                <i class="bi bi-chevron-double-down"></i> Scroll to pay
+              </a>
+            </li>
             <% if(!user){ %> 
               <li class="nav-item">
                 <a id="signin-button" class=" btn btn-secondary" href="#" onclick="signin()">

@@ -36,7 +36,12 @@ app.get("/", function (req, res) {
   });
 });
 
-// Your application routes go here 👇
+app.get("/pay", function (req, res) {
+  return res.render("pay", {
+    user: req.user,
+  });
+});
+
 app.get("/scroll", function (req, res) {
   return res.render("scroll", {
     user: req.user
