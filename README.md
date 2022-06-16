@@ -1,6 +1,6 @@
 # Lightning App Template
 
-A project template to jump-start developing a ⚡ Lightning app.
+A simple project template to build your ⚡ Lightning Apps on. Authentication, WebLN, QR-Code fallbacks and more! 
 
 [![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://glitch.com/edit/#!/import/github/reneaaron/lapp-template)
 
