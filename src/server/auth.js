@@ -97,7 +97,15 @@ function setupAuth(app) {
       tag: "login"
     });
 
-    const callbackUrl =`https://${req.get("host")}/do-login?${params.toString()}`;
+    let callbackUrl;
+
+    if (process.env.ENVRIONMENT === "production") {
+      callbackUrl =`https://${req.get("host")}/do-login?${params.toString()}`;
+    } else {
+      callbackUrl =`http://${req.get("host")}/do-login?${params.toString()}`;
+    }
+
+    
     
     const encoded = lnurl.encode(callbackUrl).toUpperCase();
     const qrCode = await qrcode.toDataURL(encoded);
