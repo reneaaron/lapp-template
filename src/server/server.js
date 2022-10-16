@@ -4,6 +4,9 @@ const bodyParser = require("body-parser");
 const { setupAuth } = require("./auth.js");
 const { setupPay } = require("./pay.js");
 
+// Import dotenv config for local environements
+require('dotenv').config()
+
 // Validate configuration
 if (!process.env.ALBY_LIGHTNING_ADDRESS) {
   console.error(
