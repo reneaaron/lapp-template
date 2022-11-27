@@ -22,6 +22,7 @@ A simple project template to build your ⚡ Lightning Apps on. Authentication, W
 Remix this glitch and set the environment variables by editing the `.env` file:
 
 - `ALBY_LIGHTNING_ADDRESS`: The `Lightning Address` of your Alby account
+- `ENVIRONMENT`: Set `production` if https is setup, otherwise leave `blank`
 
 ## Hosting
 
