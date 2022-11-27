@@ -3,6 +3,7 @@ const expressLayouts = require("express-ejs-layouts");
 const bodyParser = require("body-parser");
 const { setupAuth } = require("./auth.js");
 const { setupPay } = require("./pay.js");
+require('dotenv').config();
 
 // Validate configuration
 if (!process.env.ALBY_LIGHTNING_ADDRESS) {
